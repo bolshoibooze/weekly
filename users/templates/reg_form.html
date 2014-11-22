@@ -1,0 +1,33 @@
+                        {% extends "desktop_core.html" %}
+
+
+                          {% block content %}
+               <div class="simple-title">Sign Up</div>
+   
+                           {% if messages %}
+                        {% for message in messages %}
+      <div class="message  {% if message.tags %} message_{{ message.tags }}{% else %}message_info{% endif %}">
+   <span class="msg-text global_styles">{{ message }}</span>
+   {% endfor %}
+  {% endif %}
+      
+  
+               <div class=" form-section  spaced">
+    
+         <form   action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+    
+                  <div class="required align-center">
+                       {{form.non_field_errors }}
+                               </div>
+
+                             <fieldset>
+
+                     {% include "d_reg_base.html" %}
+
+ <input class="button" name="post" value="Submit" type="submit"/>
+
+    </fieldset>
+  </form>
+      </div>
+ 
+                         {% endblock %}

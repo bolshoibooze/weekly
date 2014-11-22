@@ -1,0 +1,55 @@
+
+                           {% extends 'desktop_core.html' %}
+                               {% load comments %}
+                                {% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li ><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Recommended</a></li>
+		<li><a href="/home/sections/">Sections</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+                   		
+                   		 {% block content %}
+                     
+                  <div class="wide-section container bottomed">
+                  
+                  
+                  <div class="paragraph topped">
+                  
+          <img class="profile-Img"  src ="{{object.photo.url}}" />
+                   
+           <span class="align-right">
+           <p>{{object.full_name}} </p>
+           <p>{{object.can_write|yesno:"Writer,Standard User"}}</p>
+           
+           
+           </span>
+         
+           
+                   </div>
+                   
+                  
+                      <div class="paragraph">
+                      
+                   <h1 class="author">About me</h1> 
+                   
+                <p>{{object.bio|safe|linebreaks}}</p>
+                
+                    
+                     {% if object.username == user.username %}  
+               <p class="styled">
+     <a class="" href="{% url 'edit_profile' user.pk %}"> Edit profile </a>
+                   </p>
+                       {% endif %}
+                   
+                   
+               
+                       
+                      
+                        {% endblock %}

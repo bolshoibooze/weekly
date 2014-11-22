@@ -1,0 +1,31 @@
+                    {% extends "mobile_core.html" %}
+
+                    {% load url from future %}
+                     
+                     
+                         {% block menu %}
+		      <div class='top-menu'>
+        <a class="align-left" href="/home/stream/">Home</a>
+           <a class="next" href="/home/popular/">Recommended</a>
+           <a class="align-right" href="/photos/all/">Sections</a>
+		      </div>
+		          {% endblock %}
+
+
+		         {% block content %}
+              <div class="simple-title topped">Welcome</div>
+
+
+                     <div class="container">
+                      <div class="paragraph">
+                   <p>Thanks for taking the trouble to signup.</p>
+                  
+           <p>You can now post comments and <a href="/home/create/">write</a> articles.</p>
+           
+                  <p> Have fun :-)</p>
+                       
+           
+          </div>
+        
+           
+		                 {% endblock %}

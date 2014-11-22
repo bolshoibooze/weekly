@@ -1,0 +1,38 @@
+		   {% extends "account_base.html" %}
+		
+		
+		
+		
+		     {% block content %}
+		
+		<div class="simple-title">Freeze Account </div>
+
+       
+                          {% if messages %}
+                      {% for message in messages %}
+      <div class="message  {% if message.tags %} message_{{ message.tags }}{% else %}message_info{% endif %}">
+   <span class="msg-text global_styles">{{ message }}</span>
+   {% endfor %}{% endif %}
+      
+  
+          <div class="regular-section form-section  spaced">
+    
+        <form   action="." method="post" >{% csrf_token %}
+
+                   {{form.non_field_errors }}
+
+                         <fieldset>
+
+              {% include "freeze_base.html" %}
+
+ <input class="button" name="post" value="Submit" type="submit"/>
+
+    </fieldset>
+  </form>
+      </div>
+		
+		
+		
+		
+		
+		        {% endblock %}

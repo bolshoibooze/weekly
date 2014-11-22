@@ -1,0 +1,60 @@
+		       {% extends "desktop_core.html" %}
+		
+		                 {% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li ><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Recommended</a></li>
+		<li><a href="/photos/all/">Photos</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+                   		
+		  
+
+
+                       {% block content %}
+                    
+                    
+                    
+                    <div class="wide-section">
+
+                    
+                      <div class="container">  
+      
+                <div class="simple-title"> Log In </div>
+                
+                  <div class="wide-section login  spaced">
+    
+              <form   action="." method="post" >{% csrf_token %}
+
+                         <div class="required align-center">
+                         {{ form.non_field_errors }}
+                            </div>
+                           
+                              <fieldset>
+
+                       {% include "login_base.html" %}
+
+    <input class="button" name="post" value="Login" type="submit">
+
+     <a class="call-btn spaced" href="/accounts/signup/"> SignUp</a>
+
+               </fieldset>
+             </form>
+           </div>
+                       </div>
+                       
+                       
+                      </div>
+ 
+                     {% endblock %}
+ 
+ 
+ 
+ 
+

@@ -1,0 +1,31 @@
+                    {% extends "loggedin_base.html" %}
+
+
+
+
+                            {% block content %}
+                 <div class="simple-title"> Freeze Account </div>
+                 <div class="paragraph">
+                 By default your account is active.
+                 <p>
+                 Click on the checkbox to deactivate it
+                 </p>
+                 </div>
+                
+                <div class="regular-section login  distanced">
+    
+              <form   action="." method="post" >{% csrf_token %}
+
+                       {{form.non_field_errors }}
+
+                              <fieldset>
+
+                       {% include "freeze_base.html" %}
+
+        <input class="button" name="post" value="Submit" type="submit"/>
+          
+               </fieldset>
+             </form>
+           </div>
+                    
+                         {% endblock %}

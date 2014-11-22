@@ -1,0 +1,47 @@
+                     
+                           {% extends 'desktop_core.html' %}
+                               {% load comments %}
+                                {% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li ><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Recommended</a></li>
+		<li><a href="/photos/all/">Photos</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+
+
+                         {% block content %}
+                         <div class="wide-section container">
+               <div class="simple-title topped"> Edit Profile </div>
+                       
+                       {% if messages %}
+                  {% for message in messages %}
+      <div class="message  {% if message.tags %} message_{{ message.tags }}{% else %}message_info{% endif %}">
+   <span class="msg-text global_styles">{{ message }}</span>
+      </div>
+                        {% endfor %}
+                         {% endif %}
+
+                     
+  
+       <form   action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                  {{form.non_field_errors }}
+
+                        <fieldset>
+
+                     {% include "edit_base.html" %}
+
+  <input class="button" name="post" value="Submit" type="submit"/>
+
+                        </fieldset>
+                      </form>
+                    </div>
+ 
+                      {% endblock %}
