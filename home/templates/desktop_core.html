@@ -116,13 +116,13 @@
                </p> 
        
        <div class="bottom-menu">
- <a class="align-left" href="/home/about/">About </a>
+ <a class="align-left" href="/about/about/">About </a>
               {% if user.is_a_writer %}
      <a class="item-two" href="/home/create/">Write</a>
                {% else %}
      <a class="item-two" href="/about/start_writing/">How To Become A Writer</a>
                {% endif %}
-   <a class="align-right" href="/home/faqs/">FAQs</a>
+   <a class="align-right" href="/about/faqs/">FAQs</a>
       			</div> 
       			
       			
@@ -130,7 +130,7 @@
       			
       			{% if user.is_authenticated %}
       			<p class="align-center">
-    <a class="" href="{% url 'myprofile' %}">{{user.full_name}}</a>  &middot; <a class="" href="{% url 'logout' %}">Logout</a>
+ <a href="/users/myprofile/">{{user.full_name}}</a>  &middot; <a  href="/users/logout/">Logout</a>
                         </p>
      
                         {% else %}
