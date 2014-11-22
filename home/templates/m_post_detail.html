@@ -1,0 +1,84 @@
+                       {% extends "mobile_core.html" %}
+                            {% load comments %}
+                        {% load url from future %} 
+                     
+                             {% block menu %}
+                              <div class='top-menu'>
+        <a class="align-left current" href="/home/stream/">Home</a>
+           <a class="next" href="/home/popular/">Recommended</a>
+           <a class="align-right" href="/home/sections/">Photos</a>
+		      </div>
+		              {% endblock %}
+
+
+
+                             {% block content %}
+                
+                         <div class="container">
+                   
+                       
+                        <div class="image">
+                 <img class="main-Img"  src ="{{article.main_photo.url}}" />
+                 </div>
+                                 
+                                 
+		      
+                       <div class="simple-title">
+                       {{article.title|safe|title}}
+                                 
+                               </div>
+                               
+                               
+                               
+                       <p>{{article.post|safe|linebreaks}}</p>
+                       
+                       
+                        {% if user.can_edit %}
+                            <p>
+ <a class="author" href="{% url 'edit_article' article.slug %}"> 
+ Edit,Publish,Recommend or Ban This Article
+ </a>
+                            </p>
+                                {% endif %}
+                        
+                        <div class="tweet">
+ <a class=" align-center" href="https://twitter.com/share" data-related="twitterdev"  data-count="none" >Share This On Twitter</a>
+                        </div>
+                        
+                        <div class="article-author">
+                  
+          <img class="content-Img"  src ="{{user.photo.url}}" />
+                   
+           <span class="align-right">
+           <p>Author: {{user.full_name}} </p>
+           </span>
+                   </div>
+                        
+                      <div class="title"> 
+{% get_comment_count  for article as comment_count %}{{comment_count}} Comment{{comment_count|pluralize}}  
+                      </div>
+                      
+               
+                    
+              
+                         {% if user.is_authenticated %}
+                    {% get_comment_form  for article as form %}
+               
+                      {% include "comment_form.html" %}
+                      
+                      
+                      {% include "m_comment_list.html" %}
+                      
+                               {% else %}
+                               <p class="author">
+           <a href="{% url 'login' %}">Please login to post a comment</a>
+                               </p>
+                               
+                               {% endif %}
+                     
+                           {% endblock %}
+                           
+                           
+                           
+                           
+                           

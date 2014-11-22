@@ -1,0 +1,56 @@
+               
+               <div class="fieldWrapper">
+    <span class="required">{{ form.title.errors }}</span>
+		<label for="id_title"> 
+<span class="align-field">Title:</span><span class="required">*</span></label>
+           <span class="align-field">{{ form.title }}</span>
+    			</div>
+			
+    		<div class="fieldWrapper">
+       <span class="required">{{ form.section.errors }}</span>
+		<label for="id_section"> 
+<span class="align-field">Section:</span><span class="required">*</span></label>
+	<span class="align-field">{{ form.section }}</span>
+    			</div>
+
+    		<div class="fieldWrapper">
+    <span class="required">{{ form.main_photo.errors }}</span>
+		<label for="id_main_photo"> 
+<span class="align-field">Main Photo:</span><span class="required">*</span></label>
+          <span class="photo-input">{{ form.main_photo }}</span>
+    			</div>
+    			
+    			
+    			<div class="fieldWrapper">
+    <span class="required">{{ form.post.errors }}</span>
+		<label for="id_post"> 
+<span class="align-field">Post:</span><span class="required">*</span></label>
+          <span class="align-field">{{ form.post }}</span>
+    			</div>
+    			
+    			{% if user.can_edit %}
+    			
+    			<div  class="fieldWrapper checkbox">
+    	         
+        <span class="required">{{ form.is_public.errors }}</span>
+		<label for="id_is_public"> 
+<span class="align-field">Publish Article:</span></label>
+                  
+      <span   class="align-right">{{ form.is_public }}</span>
+
+    			</div>
+    			
+    			<div  class="fieldWrapper checkbox">
+    	         
+        <span class="required">{{ form.editors_pick.errors }}</span>
+		<label for="id_editors_pick"> 
+<span class="align-field">Recommend:</span></label>
+                  
+      <span   class="align-right">{{ form.editors_pick }}</span>
+
+    			</div>
+    			
+    			
+    			
+    			{% endif %}
+    		

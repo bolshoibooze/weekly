@@ -1,0 +1,54 @@
+                         {% extends 'desktop_core.html' %}
+                          
+                          	{% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Most Read</a></li>
+		<li class="current"><a href="/home/sections/">Sections</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+                   		
+                   		
+                   	       {% block content %}
+                   	       
+                   	   
+                   	       
+                   	     {% if section_list %}
+                 
+                         <div class="wide-section spaced">
+                            {% for section in section_list %}
+                    
+  
+                           <div class="paragraph">
+                
+                           
+                            
+                   <div class="simple-title">{{section.name }}</div>
+                            
+                      <p> 
+                      {{ section.about|safe|linebreaks}} 
+                      {{section.num_posts}} posts 
+                       </p>
+                       
+                      
+                      </div>
+                      
+             
+                          {% endfor %}
+       
+                            </div>
+      
+                            {% endif %}
+      
+
+         
+     
+               
+                            {% endblock %} 
+                   		

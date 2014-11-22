@@ -1,0 +1,74 @@
+                   {% extends "mobile_core.html" %}
+                     {% load url from future %}
+                     
+                     
+                         {% block menu %}
+		      <div class='top-menu'>
+        <a class="align-left" href="/home/stream/">Home</a>
+           <a class="next current" href="/home/popular/">Recommended</a>
+           <a class="align-right" href="/photos/all/">Photos</a>
+		      </div>
+		          {% endblock %}
+
+
+
+                        {% block content %}
+                   
+                    
+                        {% if article_list %}
+                           
+                   {% for article in article_list %}
+                        
+                   
+                     <div class="container bottomed">
+                
+                  <img class="main-Img home"  src ="{{article.main_photo.url}}" />
+                            <br/>
+                            
+                            
+                            
+                              
+                              
+                            <div class="article-title">
+            <a href="{% url 'article' article.slug %}">{{article.title|safe|title }}</a>
+                              </div>
+                  
+                              
+               <span class="micro-copy align-left">{{article.section.name }}</span>
+               <span class="micro-copy align-right">{{article.pub_date|timesince}} ago </span>
+               
+               <br/>
+                              
+                          
+                     <p>{{article.overview|safe|linebreaks|truncatechars:140}}</p>
+                          
+ <a class="micro-copy read-more" href="{% url 'article' article.slug %}"><b> Read more &rarr;</b></a>
+      <span class="micro-copy align-right"><b>{{article.author.full_name|safe}}</b></span>
+                
+                            
+                          </div>
+                          
+                         
+                              		
+                  
+                
+                         </div>
+                       
+                       {% endfor %}
+                       
+                          
+                           
+                        
+     
+             
+                             
+                             {% else %}
+      		
+      	
+       	          <p class="spaced">No recommendations posted.</p>
+       			    
+      
+                            {% endif %}
+      
+ 
+                             {% endblock %}

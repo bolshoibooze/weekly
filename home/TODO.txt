@@ -1,0 +1,24 @@
+#TODO List
+
+1.Notification of comments ***
+
+2.Bookmarking: add & delete tags
+
+3.Use of 'get_absolute_url' to display user profile
+
+4.Expandable text area/Editor (see js file on desktop)
+
+5.Maybe signin/signup users using twitter & facebook
+
+6.Display of articles per section
+
+7.Restrict certain urls only to authenticated users(done)
+
+8.Articles by this author 
+
+9. Ht access file for caching of pages
+
+
+Finally:
+Wrap the web app in WebView to get an android app
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<!-- markup for a polygot page: accomodate HTML & XHTML -->
+<html id="Marakesh Tours" xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="no-js">
+<head> 
+<link rel="shortcut icon" href="{{MEDIA_URL}}site_media/img/favicon.ico">
+
+
+			
+                          <title>Weekly Kenyan</title>
+      
+                         
+    <meta name="description" content="A place where Kenyans write and get creative... ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Kenyan,Kenya,Online News,Kenyan Post">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no">
+        <meta http-equiv="cleartype" content="on">
+    
+          <!-- google settings -->
+     <meta name="google-site-verification" content="MjTixei5eaKtdStp1gMzLsD8buCE-ywDgAibEfNITgw" />
+     
+     <!-- bing settings --->
+    
+    
+<meta name="viewport" 
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+      
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+
+<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="Stylesheet" type="text/css" href="{{MEDIA_URL}}site_media/css/styles.css"/>
+
+<!--[if IEMobile 7]>
+<link rel="stylesheet" type="text/css" href="mobile.css"  href="mobile.css" media="screen"  />
+<![endif]-->
+
+
+</head>
+   
+ <body>
+
+			{% block  header %} 
+		<div id="back2top" class="logo"> 
+ 			  Weekly Kenyan
+
+			   </div>
+
+			{% endblock %}
+
+		{% block menu %} {% endblock %}
+		
+              {% block notifications %}{% endblock %}
+
+
+		{% block content %}  {% endblock %}
+
+
+
+		{% block content1 %}{% endblock %}
+
+
+		{% block content2 %}{% endblock %}
+
+
+		{% block content3 %}{% endblock %}
+
+
+		{% block content4 %}{% endblock %}
+
+
+		{% block content5 %}{% endblock %}
+
+ 
+
+
+
+		   {% block footer %}
+    
+     		
+      
+      		
+      			
+      		   
+               
+               
+      			
+      			<div class="bottom-menu">
+ <a class="align-left" href="/about/about/">About </a>
+                {% if user.is_a_writer %}
+     <a class="item-two" href="/home/create/">Write</a>
+                  {% else %}
+     <a class="item-two" href="/about/start_writing/">How To Become A Writer</a>
+                   {% endif %}
+   <a class="align-right" href="/about/faqs/">FAQs</a>
+      			</div> 
+      			
+      			<div class="user-options topped">
+      			
+      			{% if user.is_authenticated %}
+      			<p class="author">
+    <a class="" href="{% url 'myprofile' %}">{{user.full_name}}</a>  &middot; <a class="" href="{% url 'logout' %}">Logout</a>
+                        </p>
+     
+                        {% else %}
+                        
+                        <p class="author styled">
+                 <a class="align-right" href="{% url 'login' %}">Login</a>
+                 </p>
+      			{% endif %}
+      			
+      			{% if user.can_edit %}
+      	                 <p class="styled">
+               <a  href="{% url 'unpublished' %}">Review Unpublished Articles</a>
+                 </p>
+      			{% endif %}
+      			</div>
+      			
+      			<div class="author spaced">
+                Our collective consciousness 
+                     </div>
+      			
+                   
+               <div class="back2top">
+     	<a href="#back2top">back-to-top</a>
+      			</div>
+      			
+      	     
+               
+      
+   <div  id="menu" class="footer-item">
+   &copy; Weekly Kenyan.All rights reserved 2014-{% now "Y" %}
+   </div>
+      
+{% endblock %}
+ <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js">
+ </script>
+   
+  <script type="text/javascript">
+window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+</script> 
+   
+</body>
+</html>
+

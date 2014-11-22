@@ -1,0 +1,70 @@
+                  {% extends "mobile_core.html" %}
+                     {% load url from future %}
+                     
+                     
+                         {% block menu %}
+		      <div class='top-menu'>
+        <a class="align-left current" href="/home/stream/">Stream</a>
+           <a class="next" href="/home/popular/">Popular</a>
+           <a class="align-right" href="/home/sections/">Sections</a>
+		      </div>
+		          {% endblock %}
+
+
+
+                        {% block content %}
+               <div class="simple-title"> Editor's Picks </div>
+                    
+                        {% if article_list %}
+                           
+                   {% for article in article_list %}
+                        <div class=" common spaced">
+                   
+                     <div class="container">
+                
+                  <img class="main-Img home"  src ="{{article.main_photo.url}}" />
+                            <br/>
+                            
+                      {{article.section.name }}<br/>
+                            
+                            
+                        <div class="article-title">
+            <a href="{% url 'detail' article.pk %}">{{article.title|safe|title }}</a>
+                              </div>
+                              
+                      <p>{{article.overview|safe|linebreaks}}</p>
+                          
+                         <span class="align-left">
+                         {{article.author.user.full_name|safe}}
+                         </span>
+                   
+                              		
+                  
+                
+                         </div>
+                       
+                       {% endfor %}
+                       
+                          
+                           
+                        
+     
+             
+                          {% endfor %}
+       
+                             </div>
+                             
+                             {% else %}
+      		<div class="paragraph distanced">
+      	
+       			No content posted yet<br/>
+       	       Lorem ipsum mumbo jambo for testing our awesome font
+       			    </div>
+      
+                            {% endif %}
+      
+ 
+     
+     </div>
+               
+                            {% endblock %} 

@@ -1,0 +1,21 @@
+			{% extends 'alt_mobile_core.html' %}
+			  
+			
+			
+			    {% block content %}
+	             <div class="title"> Notifications </div>
+	             
+	                  {% if notice_list %}
+	                  
+		       {% for notice in notice_list %}
+		          <div class="paragraph">
+		        <p>{{notice.title|title|safe}}</p>
+		        <p>{{notice.description|linebreaksbr|safe}}</p>
+         <span class="extra-txt align-center">{{notice.timestamp|timesince}} ago </span>
+         
+
+                           
+		                </div>
+		               {% endfor %}
+		                {% endif %}
+			      {% endblock %}

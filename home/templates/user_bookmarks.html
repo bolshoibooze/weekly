@@ -1,0 +1,43 @@
+
+                     
+                    {% if object_list %}
+    
+                {% for bookmark in object_list %}
+                
+                <div class="paragraph">
+                
+                              
+        <img class="article-Img align-left"   src ="{{bookmark.article.main_photo.url}}" />
+                        
+              <p>         
+<a class="article-title" href="{{ bookmark.article.get_absolute_url }}">
+{{bookmark.article.title|safe|title }}
+</a> 
+              </p>
+              
+              
+                       <p>
+ <span class="micro-copy">Posted in :{{bookmark.article.section.name }} by 
+ <span class="author">{{bookmark.article.author.full_name|safe}} </span> 
+  
+               <span class="micro-copy align-right">
+     {{bookmark.article.pub_date|timesince}} ago 
+               </span>
+                            </p>
+                            
+                                
+                            
+                              
+                       <p>  
+             {{bookmark.article.overview|safe|linebreaks|truncatechars:140}}
+                        </p> 
+                        
+                        </div>
+                     {% endfor %}
+
+    <p class="pagination">{% if has_previous %}<a href="?page={{ previous }}">Previous {{ results_per_page }}</a>{% endif %}&nbsp;&nbsp;{% if has_next %}<a href="?page={{ next }}">Next {{ results_per_page }} &gt;</a>{% endif %}
+  {% else %}
+    <p>You haven't bookmarked any articles yet.</p>
+                                     {% endif %}
+
+

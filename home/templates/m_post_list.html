@@ -1,0 +1,76 @@
+                  {% extends "mobile_core.html" %}
+                        {% load comments %}
+                     {% load url from future %}
+                     
+                     
+                         {% block menu %}
+		      <div class='top-menu'>
+        <a class="align-left current" href="/home/stream/">Home</a>
+           <a class="next" href="/home/popular/">Recommended</a>
+           <a class="align-right" href="/photos/all/">Photos</a>
+		      </div>
+		          {% endblock %}
+
+
+
+                        {% block content %}
+                   
+                    
+                        {% if article_list %}
+                           
+                   {% for article in article_list %}
+                        
+                   
+                     <div class="container bottomed">
+                
+                  <img class="main-Img home"  src ="{{article.main_photo.url}}" />
+                            <br/>
+                            
+                            
+                            
+                              
+                              
+                          <div class="article-title"> 
+<a  href="{% url 'article' article.slug %}">{{article.title|safe|title }}</a> 
+                      </div>
+                              
+                  
+                            
+               <span class=" micro-copy align-left"><b>{{article.section.name }}</b></span>
+        <span class="micro-copy align-right"><b>{{article.pub_date|timesince}} ago</b> </span>
+               <br/>
+                              
+                          
+                  <p>{{article.overview|safe|linebreaks|truncatechars:140}}</p>
+                       
+                       <p>   
+ <a class="micro-copy read-more" href="{% url 'article' article.slug %}"> Read more &rarr;</a>
+      <span class="micro-copy align-right"></b>{{article.author.full_name|safe}}</b></span>
+                </p>
+                            
+                          </div>
+                          
+                         
+                              		
+                  
+                
+                         </div>
+                       
+                       {% endfor %}
+                       
+                          
+                           
+                        
+     
+             
+                             
+                             {% else %}
+      		<div class="paragraph distanced">
+      	
+       			No content to load
+       			    </div>
+      
+                            {% endif %}
+      
+ 
+                             {% endblock %}

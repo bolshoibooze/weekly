@@ -1,0 +1,79 @@
+                           {% extends 'desktop_core.html' %}
+                             {% load bookmark_tags %}
+                              {% load core_tags %}
+                                {% load comments %}
+                          	{% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li class="current"><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Recommended</a></li>
+		<li><a href="/photos/all/">Photos</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+                   		
+                   		
+                   	       {% block content %}
+                   	       
+                   	    <div class="wide-section">
+                  <div class="simple-title">UnPublished Articles </div>
+                   	       
+                   	     {% if article_list %}
+                 
+                         
+                            {% for article in article_list %}
+                    
+  
+                           <div class="paragraph">
+                
+                              
+        <img class="article-Img align-left"   src ="{{article.main_photo.url}}" />
+                        
+              <p>         
+<a class="article-title" href="{% url 'article' article.slug  %}">{{article.title|safe|title }}
+</a> 
+              </p>
+              
+              
+                       <p>
+ <span class="micro-copy">Posted in :{{article.section.name }} by 
+ <span class="author">{{article.author.full_name|safe}} </span> 
+  
+               <span class="micro-copy align-right">
+{{article.pub_date|timesince}} ago |{% get_comment_count  for article as comment_count %}
+{{comment_count}} comment{{comment_count|pluralize}}
+               </span>
+                            </p>
+                            
+                                
+                            
+                              
+                       <p class="spaced">  
+             {{article.overview|safe|linebreaks|truncatechars:140}}
+                        </p> 
+                        
+                        
+                        
+                               </div>
+                      
+             
+                          {% endfor %}
+                          
+                          {% else %}
+      		
+      	
+       	          <p class="spaced">No unpublished articles.</p>
+       			    
+                         
+       
+                            {% endif %}
+
+         
+     
+                                  </div>
+                            {% endblock %} 
+                   		

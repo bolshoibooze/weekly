@@ -1,0 +1,17 @@
+                      {% extends "mobile_core.html" %}
+                         {% load custom_tags %}
+                      
+                      
+                       {% block notifications %}
+		    
+		     
+                   
+                 {% get_unread_count as unread_count %}
+                            {% if unread_count %}
+                            
+                          <div class="notification">
+<a href="{% url 'mark_as_read' %}">Notifications:<span class="topcoat-notification align-right">{{ unread_count }}</a></span>
+            	  
+                     </div>
+                            {% endif %}
+                           {% endblock %}

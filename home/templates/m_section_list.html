@@ -1,0 +1,40 @@
+                  {% extends "mobile_core.html" %}
+                     {% load url from future %}
+                     
+                     
+                         {% block menu %}
+		      <div class='top-menu'>
+        <a class="align-left" href="/home/stream/">Home</a>
+           <a class="next" href="/home/popular/">Most Read</a>
+           <a class="align-right current" href="/home/sections/">Sections</a>
+		      </div>
+		          {% endblock %}
+
+
+
+                        {% block content %}
+          
+                    
+                        {% if section_list %}
+                           
+                      <div class="container">
+                   {% for section in section_list %}
+                      
+                        <div class="paragraph">
+                            
+              <div class="simple-title">{{section.name }}</div>
+                                
+                       <p>{{section.about|safe|linebreaks}}</p>
+                         
+                         </div>
+                       
+                       {% endfor %}
+                       
+                             </div>
+                             
+                             
+      
+                            {% endif %}
+      
+   
+                            {% endblock %} 

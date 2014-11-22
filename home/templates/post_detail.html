@@ -1,0 +1,85 @@
+                           {% extends 'desktop_core.html' %}
+                               {% load comments %}
+                                {% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li class="current"><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Recommended</a></li>
+		<li><a href="/photos/all/">Photos</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+                   		
+                          	
+                   	       {% block content %}
+                   	   <div class="wide-section spaced">
+                   
+                         
+                                     <div class="image">
+                 <img class="main-Img"  src ="{{article.main_photo.url}}" /><br/>
+                 
+                 
+   	    
+                                 <h2>
+                        
+                       <span class="overlay-title">
+                       {{article.title|safe}}
+                                 </span>
+                                 
+                            {{article.overview|safe|linebreaks}}
+                                </h2>
+                               </div>
+                               
+                               <div class="story">
+                             {{article.post|safe|linebreaks}}
+                             
+                                  {% if user.can_edit %}
+                                  
+                            <p>
+ <a class="align-center" href="{% url 'edit_article' article.slug %}"> 
+ Edit,Publish,Recommend or Ban This Article
+ </a>
+                            </p>
+                                {% endif %}
+                                
+                                 </div>
+                                 
+                                 <p>
+                          
+                                 
+                                 <div class="tweet">
+                       
+<a class=" align-center" href="https://twitter.com/share" data-related="twitterdev" data-size="medium" data-count="none" >Share This On Twitter </a>
+
+                                 </div>
+                                 
+                                 <div class="article-author">
+                  
+          <img class="content-Img"  src ="{{article.author.photo.url}}" />
+          
+          <p class="align-right"> Author: {{article.author.full_name|safe}}</p>
+                   
+           
+          
+          
+           
+                   </div>
+                                 
+                            <div class="title"> Comments </div>
+
+    
+
+                         {% get_comment_form  for article as form %}
+               
+                          {% include "comment_form.html" %}
+                          
+                     <div class="comment-form">{% include "comment_list.html" %}</div>
+                     
+                                  {% endblock %}
+                                  
+                                  
+                                  

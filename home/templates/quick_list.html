@@ -1,0 +1,11 @@
+   
+   
+                              {% if post_list %}
+                              
+                            {% for post in post_list %}
+                             <p>
+                    <span class="align-left">Section:{{post.section.name|safe|title}}</span>
+                    <span class="align-right"> {{post.title|title|safe}}</span>
+                            </p>
+                            {% endfor %}
+                            {% endif %}
