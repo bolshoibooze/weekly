@@ -1,0 +1,67 @@
+                           {% extends 'desktop_core.html' %}
+                               {% load comments %}
+                                {% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li ><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Recommended</a></li>
+		<li class="current"><a href="/photos/all/">Photos</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+                   		
+                          	
+                   	       {% block content %}
+                   	   <div class="wide-section spaced">
+                   
+                         
+                                     <div class="image">
+                 <img class="main-Img"  src ="{{photo.main_photo.url}}" /><br/>
+                                  </div>
+                 
+                 
+   	    
+                                 
+                        
+                                <div class="simple-title">
+                              {{photo.caption|safe|linebreaks}}
+                                 </div>
+                                 
+                                 
+                           
+                               <div class="story">
+                             {{photo.post|safe|linebreaks}}
+                                 </div>
+                                 
+                                 <div class="tweet">
+                       
+<a class=" align-center" href="https://twitter.com/share" data-related="twitterdev" data-size="medium" data-count="none" >Share This On Twitter </a>
+
+                                 </div>
+                                 
+                                 <div class="article-author">
+                  
+          <img class="content-Img"  src ="{{user.photo.url}}" />
+                   
+           <span class="align-right">
+           <p>Posted by : <b>{{user.full_name}}</b> </p>
+           </span>
+           
+                   </div>
+                                 
+                            <div class="title"> Comments </div>
+
+                         {% get_comment_form  for photo as form %}
+               
+                          {% include "p_comment_form.html" %}
+                          
+                  <div class="comment-form">{% include "p_comment_list.html" %}</div>
+                     
+                                  {% endblock %}
+                                  
+                                  
+                                  

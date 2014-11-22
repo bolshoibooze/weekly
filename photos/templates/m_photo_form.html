@@ -1,0 +1,50 @@
+                            
+		  {% extends "mobile_core.html" %}
+                     {% load url from future %}
+                        {% load comments %} 
+                       {% load core_tags %}
+                       
+                         {% block menu %}
+                    
+                    
+		      <div class='top-menu'>
+        <a class="align-left" href="/home/stream/">Home</a>
+           <a class="next" href="/home/popular/">Recommended</a>
+           <a class="align-right current" href="/photos/all/">Photos</a>
+		      </div>
+		          {% endblock %}
+
+
+
+                         {% block content %}
+                   
+                       {% if messages %}
+                  {% for message in messages %}
+      <div class="message  {% if message.tags %} message_{{ message.tags }}{% else %}message_info{% endif %}">
+   <span class="msg-text global_styles">{{ message }}</span>
+      </div>
+                        {% endfor %}
+                         {% endif %}
+
+                     <div class="container">
+  
+  
+                     <div class="paragraph topped">
+       <form   action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                  {{form.non_field_errors }}
+
+                        <fieldset>
+
+                {% include "m_base_form.html" %}
+
+  <input class="button" name="post" value="Upload Photo" type="submit"/>
+
+                        </fieldset>
+                      </form>
+                    </div>
+                    </div>
+                    
+ 
+                      {% endblock %}
+                     

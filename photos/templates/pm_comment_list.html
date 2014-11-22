@@ -1,0 +1,21 @@
+                                 
+                              {% load comments %}
+                               
+                       {% get_comment_list  for photo as comment_list %}
+                       
+                           {% for comment in comment_list %}
+    
+                        <div class="paragraph">
+            <img class="content-Img"  src ="{{user.photo.url}}" />
+                   
+           <span class="align-right micro-copy">{{user.full_name}} </span>
+   
+                  <p>{{ comment.comment|safe|linebreaks|truncatechars:250 }}</p>
+                  
+               <p class="author micro-copy"> {{ comment.submit_date|timesince }} ago </p>
+                         
+                                     </div>
+    
+        
+  
+                                    {% endfor %}
