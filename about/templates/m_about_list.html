@@ -1,0 +1,52 @@
+                   {% extends "mobile_core.html" %}
+                    {% load url from future %} 
+                    
+                        {% block menu %}
+		      <div class='top-menu'>
+        <a class="align-left" href="/home/stream/">Home</a>
+           <a class="next" href="/home/popular/">Recommended</a>
+           <a class="align-right" href="/photos/all/">Photos</a>
+		      </div>
+		          {% endblock %}
+
+
+                      {% block content %}
+                       {% if about_list %}
+                           
+                  
+                  {% for about in about_list %}
+                         <div class="image"> 
+                    
+            <img class="main-Img"  src ="{{about.image.url}}" /><br/>
+            
+              <h2>
+           <div class="simple-title"> {{about.title|title|safe}} </div>
+              </h2>
+                 </div>
+           
+     
+                    <div class="container">
+         
+                    
+                    <p>{{about.post|safe|linebreaks}}</p>
+                     
+                <p><a class="subscribe-btn" href="/about/write/"> Start Writing </a></p>
+             
+                
+                            {% endfor %}
+       
+                              </div>
+                             {% else %}
+      <div class="regular-section common distanced">
+      
+                          No content to load
+       </div>
+ 
+      {% endif %}
+      
+      
+ 
+     
+     </div>
+               
+                            {% endblock %} 
