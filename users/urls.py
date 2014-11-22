@@ -6,19 +6,18 @@ from .models import *
 from .views import *
 
 
-urlpatterns = patterns('accounts.views',
+urlpatterns = patterns('users.views',
 
     url(r'^login/$',LoginView.as_view(),
         name = 'login'),
+        
+    url(r'^logout/$','logout_view',name = 'logout'),
     
-    
-    url(r'^logout/$',MyLogoutView.as_view(),
-        name = 'logout'),
+    #url(r'^logout/$',MyLogoutView.as_view(),name = 'logout'),
     
       
     #url(r'^signup/$',StepOneView.as_view(),name = 'signup'),
     
-    url(r'^register/$',TestView.as_view()),
         
     url(r'^signup/$',RegistrationView.as_view(),name = 'signup'),
     

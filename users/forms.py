@@ -83,6 +83,12 @@ class UserCreationForm(forms.ModelForm):
         label=_('Gender')
     )
     photo = forms.ImageField(widget=ImageWidget())
+    bio = forms.CharField(
+        max_length=500,label='Bio',
+        widget=forms.Textarea(attrs={'rows':60,'cols':20}),
+        initial = 'Optional,you can skip this'
+        
+    )
     
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)

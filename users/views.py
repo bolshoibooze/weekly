@@ -116,7 +116,7 @@ class MyLogoutView(RedirectView):
 class LogoutView(MobileTemplateView):
     template_name= 'login_form.html'
     mobile_template_name='m_login_form.html'
-    redirect_url = '/accounts/login/'
+    redirect_url = '/users/login/'
     redirect_field_name = "next"
     
     def get(self, *args, **kwargs):
@@ -151,17 +151,7 @@ class LogoutView(MobileTemplateView):
 
 
         
-class TestView(MobileFormView):
-    template_name = 'reg_form.html'
-    mobile_template_name = 'm_reg_form.html'
-    form_class = UserCreationForm
-    #success_url = '/wallet/activate/'
-    success_url = '/accounts/welcome/'
-    
-    def form_valid(self, form):
-        form.save()
-        return super(TestView, self).form_valid(form)
-            
+
         
 
 class StepOneView(MobileFormView):
@@ -170,7 +160,7 @@ class StepOneView(MobileFormView):
     mobile_template_name = 'm_reg_form.html'
     form_class = UserCreationForm
     #success_url = '/wallet/activate/'
-    success_url = '/accounts/welcome/'
+    success_url = '/users/welcome/'
     
     def form_valid(self, form):
         form.save()
@@ -203,7 +193,7 @@ class ChangePasswordFormView(MobileFormView):
     template_name = 'password_form.html'
     mobile_template_name = 'password_m_form.html'
     form_class = MyPasswordChangeForm
-    success_url = '/accounts/change_pin/'
+    success_url = ''
     
     def form_valid(self, form):
         self.instance.user = request.user
@@ -223,7 +213,7 @@ class FreezeAccountFormView(MobileFormView):
     template_name = 'freeze_form.html'
     mobile_template_name = 'freeze_form.xhtml'
     form_class = FreezeAccountForm
-    get_success_url = '/accounts/login/'
+    get_success_url = ''
     
     def get_object(self):
         return get_object_or_404(User, pk=request.session['user_id'])
@@ -263,7 +253,7 @@ class ProfileTemplateView(MobileTemplateView):
                 self.object.username != kwargs['username']:
             messages.warning(request, "You can only view your own profile "
                              "pages!")
-            profile_page = '/accounts/myprofile/'
+            profile_page = '/users/myprofile/'
             return redirect(profile_page)
         return super(ProfileTemplateView, self).dispatch(request, *args, **kwargs)
     
