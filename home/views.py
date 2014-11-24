@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse_lazy,resolve
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic.base import RedirectView
 from django.contrib.auth.decorators import login_required
 
 from weekly.settings import *
@@ -19,7 +20,9 @@ from .forms import *
 from .utils import *
 
 
-
+class IndexRedirectView(RedirectView):
+    permanent = False
+    url = '/home/stream/'
 
     
 

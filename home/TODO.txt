@@ -2,6 +2,11 @@
 
 1.Notification of comments ***
 
+<https://djangosnippets.org/snippets/367/>
+<http://stackoverflow.com/questions/8603469/how-to-use-django-notification-to-inform-a-user-when-somebody-comments-on-their>
+<https://djangosnippets.org/snippets/366/>
+<https://djangosnippets.org/snippets/366/>
+
 2.Bookmarking: add & delete tags
 
 3.Use of 'get_absolute_url' to display user profile

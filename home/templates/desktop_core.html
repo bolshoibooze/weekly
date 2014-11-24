@@ -116,13 +116,13 @@
                </p> 
        
        <div class="bottom-menu">
- <a class="align-left" href="/about/about/">About </a>
+ <a class="align-left" href="{% url 'about' %}">About </a>
               {% if user.is_a_writer %}
-     <a class="item-two" href="/home/create/">Write</a>
+     <a class="item-two" href="{% url 'create' %}">Write</a>
                {% else %}
-     <a class="item-two" href="/about/start_writing/">How To Become A Writer</a>
+     <a class="item-two" href="{% url 'start_writing' %}">How To Become A Writer</a>
                {% endif %}
-   <a class="align-right" href="/about/faqs/">FAQs</a>
+   <a class="align-right" href="{% url 'faqs' %}">FAQs</a>
       			</div> 
       			
       			
@@ -130,7 +130,7 @@
       			
       			{% if user.is_authenticated %}
       			<p class="align-center">
- <a href="/users/myprofile/">{{user.full_name}}</a>  &middot; <a  href="/users/logout/">Logout</a>
+ <a href="{% url 'myprofile' %}">{{user.full_name}}</a>  &middot; <a  href="{% url 'logout' %}">Logout</a>
                         </p>
      
                         {% else %}

@@ -22,9 +22,9 @@ from weekly.settings import *
 
 #from follow import utils
 from sorl.thumbnail import ImageField
-from django.contrib import comments
-from django.contrib.comments import Comment
-from notifications import notify
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.comments.models import Comment
+from django.dispatch import dispatcher
 
 class Section(models.Model):
     name = models.CharField(
@@ -210,11 +210,28 @@ class Article(models.Model):
     def update_bookmark_count(self):
         self.bookmark_count = self.bookmarks.count() or 0
         self.save()
-                         
+    
+    
+                     
     def save(self,*args,**kwargs):
         self.slug = slugify(self.title)
         #if not self.created:self.views = F('views') + 1self.save()
         super(Article,self).save(*args,**kwargs)
+        
+    def post_article_comment_save(sender,instance):
+        if instance.content_type == ContentType.objects.get_for_model(Article):
+           ym=instance.get_content_object()
+           from django.core.mail import send_mail
+           from django.template import Context, loader
+           subject = 'New Comment by %s on %s'%(instance.user.username,ym.title)
+           message_template = loader.get_template('comment_notification_email.txt')
+           message_context = Context({ 'comment':instance,"content_object":ym})
+           message = message_template.render(message_context)
+           send_mail(subject, message,settings.DEFAULT_FROM_EMAIL,[ym.user.email])
+           
+           dispatcher.connect(
+           post_article_comment_save, sender=Comment,signal=models.signals.post_save
+           )
   
         
 class Bookmark(models.Model):
