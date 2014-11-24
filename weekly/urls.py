@@ -10,7 +10,7 @@ from yawdadmin import admin_site
 admin_site._registry.update(admin.site._registry)
 
 urlpatterns = patterns('',
-    # url(r'^$', 'weekly.views.home', name='home'),
+    #url(r'^$',IndexRedirectView.as_view()),
     
     url(r'^home/', include('home.urls')),
     

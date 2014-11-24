@@ -46,7 +46,7 @@ border-top:1px solid #eee;border-bottom:1px solid #eee;}
 .centered {margin-left:45%;} .extra-txt {font-size:smaller;}
 .custom-adjustment {margin-left:25%;} .notification-title {padding-bottom:5px;color:green;}
 .number {font-weight:bolder;color:black:padding:5px;font-size:larger;}
-.faq-answer {color:#262C3A;} .faq-qstn {font-weight:bolder;}.blank{display:none;}
+.faq-answer {color:white;} .faq-qstn {font-weight:bolder;color:color:#7eccd4;}.blank{display:none;}
 
 
 .well-spaced {margin-top:12%;margin-bottom:12%;}

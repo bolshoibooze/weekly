@@ -5,52 +5,61 @@ import os.path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+
+
 ADMINS = (
      ('Arthur Mwai', 'mwaigaryan@gmail.com'),
 )
+
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tours',
-        'USER': 'siteadmin',
-        'PASSWORD': 'siteadmin_53$',
-        'HOST': 'localhost',                     
-        'PORT': '',                      
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test',                      
+        'USER': '',#bolshoi53
+        'PASSWORD': '',#bolshoi53
+        'HOST': '',                    
+        'PORT': '',                    
     }
 }
 
 
-
 ALLOWED_HOSTS = ['*']
 
+DATABASE_ENGINE = ''
 TIME_ZONE = 'Africa/Nairobi'
+
 
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
+
 USE_I18N = True
+
 
 USE_L10N = True
 
+
 USE_TZ = True
+
 
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'static/media/')
 
-FILE_UPLOAD_PERMISSIONS = 0644
 
 MEDIA_URL = '/static/media/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(__file__),'static/')
+
+STATIC_ROOT = ''
+
 
 STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = (
-    #os.path.join(os.path.dirname(__file__), 'static'),
+    os.path.join(os.path.dirname(__file__), 'static'),
 )
 
 STATICFILES_FINDERS = (
@@ -59,27 +68,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-#Cache Settings
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-
-CACHE_MIDDLEWARE_SECONDS = 3600
-
-
-
-#default plus additional caches
-CACHES = {
-  'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-        'TIMEOUT':60,
-    }
-}
-
-USE_ETAGS = True
-DATE_INPUT_FORMATS = '%d-%m-%Y'
-
-
-#secret key and the rest
 
 SECRET_KEY = '^&c^gzeau$ltd%_hw6@t@iqvu99c6l*#+6%tn163-a3*mwsxcz'
 

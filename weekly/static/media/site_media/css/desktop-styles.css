@@ -280,7 +280,7 @@ padding:10px;background-color:white;border-top:2px solid #333333;margin-top:10%;
 .spaced {margin-bottom:5%;}.l-space {float:right;}.contacts {font-size:larger;}
 .topped {border-top:1px solid #333333;}.linked {font-size: 1.5em;line-height:normal;margin-left:35%;}.bottomed {border-bottom:1px solid #eee;}.distanced {margin-bottom:10%;}
 .centered {margin:2% 20% 3% 20%;text-align:center;}.btn-space {width:100%;margin-left:8%;display: block;}.item-spacing {margin-left:9%;margin-right:5%;padding:10px;display:inline-block;border-bottom:1px solid #eee;}.p-Img {margin-right:2%;}.big-font {font-size:3.5em;letter-spacing:normal;font-weight:normal;}.date-format { margin-left:9%;}
-.faq-answer {color:#262C3A;} .faq-qstn {font-weight:bolder;}
+.faq-answer {color:white;} .faq-qstn {font-weight:bolder;color:#7eccd4;}
 
 .center-content {text-align:center;}
 
