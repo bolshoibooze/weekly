@@ -154,13 +154,13 @@ class LogoutView(MobileTemplateView):
 
         
 
-class StepOneView(MobileFormView):
+class StepOneView(MobileCreateView):
     #model = CustomUser
     template_name = 'reg_form.html'
     mobile_template_name = 'm_reg_form.html'
     form_class = UserCreationForm
     #success_url = '/wallet/activate/'
-    success_url = '/users/welcome/'
+    success_url = reverse_lazy('redirect')
     
     def form_valid(self, form):
         form.save()
@@ -170,14 +170,11 @@ class StepOneView(MobileFormView):
         
 class RegistrationView(CustomCreateView):
     model = ExtendedUser
-    form_class = UserCreationForm
+    form_class = MyUserCreationForm
     template_name = 'reg_form.html'
     mobile_template_name = 'm_reg_form.html'
     success_url = reverse_lazy('redirect')
     
-    def form_valid(self, form):
-        form.save()
-        return super(RegistrationView, self).form_valid(form)
     
  
 
@@ -284,12 +281,11 @@ class UserProfileDetailView(ModelDetailView):
             return redirect(profile_page)
         return super(UserProfileDetailView, self).dispatch(
             request, *args, **kwargs)
-    
-    
+
+
 class EditProfileView(ModelUpdateView):
     model = ExtendedUser
     form_class = EditProfileForm
-    #fields = ('photo','bio','username')
     template_name = 'profile_edit_form.html'
     mobile_template_name = 'profile_edit_m_form.html'
     success_url = reverse_lazy('myprofile')

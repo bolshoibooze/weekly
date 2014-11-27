@@ -58,6 +58,67 @@ GENDER_CHOICES = (
    
 )
 
+class MyUserCreationForm(forms.ModelForm):
+    error_messages = {
+        'duplicate_email': _("That email already exists."),
+        'password_mismatch': _("Passwords don't match'."),
+    }
+    email = forms.CharField(
+       label=_("email"), max_length=30
+    )
+    password1 = forms.CharField(
+       max_length=50,
+       label=_("Set Password"),
+       widget=forms.PasswordInput
+    )
+    birthday = forms.DateField(
+       initial='Format:day-month-Year',
+       input_formats=['%d-%m-%Y',], 
+       label=_('Date of Birth')
+    )
+    gender = forms.ChoiceField(
+        choices=GENDER_CHOICES,
+        widget=forms.Select(attrs={'class':'choices'}),
+        label=_('Gender')
+    )
+    def __init__(self, *args, **kwargs):
+        super(MyUserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['photo'].widget.attrs['class'] = 'fileUpoad'
+        
+    class Meta(object):
+        model = ExtendedUser
+        fields = (
+        'email','full_name',
+        'photo','birthday','gender'
+        ) 
+       
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        try:
+            get_user_model().objects.get(email=email)
+        except get_user_model().DoesNotExist:
+            return email
+        raise forms.ValidationError(self.error_messages['duplicate_email'])
+    
+    def clean_password1(self):
+        password1 = self.cleaned_data.get("password1", "")
+        if len(password1) == 0:
+            raise forms.ValidationError('Please enter a password')
+        return password1
+        
+    def clean_full_name(self):
+        full_name = self.cleaned_data['full_name']
+        
+        if len(full_name) > 50:
+            raise ValidationError(_('Your name should not exceed 50 characters'))
+        return full_name
+            
+    def save(self, commit=True):
+        user = super(MyUserCreationForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        if commit:
+            user.save()
+        return user
 
 class UserCreationForm(forms.ModelForm):
     error_messages = {
@@ -73,7 +134,7 @@ class UserCreationForm(forms.ModelForm):
        widget=forms.PasswordInput
     )
     birthday = forms.DateField(
-       initial='day-month-Year',
+       initial='Format:day-month-Year',
        input_formats=['%d-%m-%Y',], 
        label=_('Date of Birth')
     )
@@ -82,7 +143,6 @@ class UserCreationForm(forms.ModelForm):
         widget=forms.Select(attrs={'class':'choices'}),
         label=_('Gender')
     )
-    photo = forms.ImageField(widget=ImageWidget())
     bio = forms.CharField(
         max_length=500,label='Bio',
         widget=forms.Textarea(attrs={'rows':60,'cols':20}),
@@ -98,12 +158,22 @@ class UserCreationForm(forms.ModelForm):
         
     class Meta:
         model = ExtendedUser
+        
         fields = (
         "full_name","gender","email",
         "photo","birthday","bio"
     
         )
-    
+        
+    def clean_photo(self):
+        photo = self.cleaned_data['photo']
+        #validate content type
+        main, sub = photo.content_type.split('/')
+        if not (main == 'image' and sub in ['jpeg', 'pjpeg', 'gif', 'png']):
+            raise forms.ValidationError(u'Please use a JPEG, GIF or PNG image.')
+        
+        
+        
     def clean_email(self):
         email = self.cleaned_data["email"]
         try:
@@ -133,25 +203,36 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
-
 class EditProfileForm(forms.ModelForm):
+    email = forms.CharField(
+       label=_("email"), max_length=30
+    )
     bio = forms.CharField(
        max_length=250,label='About me',
-       widget=forms.Textarea(attrs={'rows':30,'cols':20}),
+       #widget=forms.Textarea(attrs={'rows':15,'cols':20}),
+       widget=AutoResizeTextarea()
     )
-    photo = forms.FileField(label=_('Photo'))
+    photo = forms.ImageField(
+       widget=ImageWidget()
+    )
     def __init__(self, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
         self.fields['photo'].widget.attrs['class'] = 'fileUpoad'
         
-    class Meta:
+    class Meta(object):
         model = ExtendedUser
         fields = (
-        "photo","bio","email"
-    
+        'bio','photo','email'
         )
-                    
-           
+        
+    def clean_photo(self):
+        photo = self.cleaned_data['photo']
+        #validate content type
+        main, sub = photo.content_type.split('/')
+        if not (main == 'image' and sub in ['jpeg', 'pjpeg', 'gif', 'png']):
+            raise forms.ValidationError(u'Please use a JPEG, GIF or PNG image.')
+    
+
         
 class MyUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
@@ -166,7 +247,7 @@ class MyAuthForm(AuthenticationForm):
     pass 
     
     error_messages = {
-        'invalid_login': _("Please enter a correct Id/Passport Number and PIN. "
+        'invalid_login': _("Please enter your registred email. "
                            ),
         'no_cookies': _("Your Web browser doesn't appear to have cookies "
                         "enabled. Cookies are required for logging in."),

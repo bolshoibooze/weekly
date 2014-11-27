@@ -1,14 +1,28 @@
 
                                                 
-               
+               <div class="fieldWrapper">
+<span class="required align-center">{{ form.full_name.errors }}</span>
+             <label for="id_full_name" > 
+        <span class="align-field" >Full Name:</span>
+         <span class="required">*</span></label>
+                {{ form.full_name}} 
+                
+                      </div>
+                      
+                      <div class="fieldWrapper">
+    <span class="required">{{ form.photo.errors }}</span>
+		<label for="id_photo"> 
+        <span class="align-field">Photo:</span><span class="required">*</span>
+                        </label>
+               <span class="align-field" > {{ form.photo }}</span>
+    			       </div>
                       
              <div class="fieldWrapper">
-             
- <span class="required">{{ form.username.errors }}</span>
+ <span class="required">{{ form.email.errors }}</span>
             <label for="id_username">
-     <span class="align-field"> Username:</span>
+     <span class="align-field"> Email:</span>
          <span class="required">*</span></label>
-                 {{ form.username }} 
+                 {{ form.email}} 
                  
                       </div>
 
@@ -22,43 +36,19 @@
                  
                     </div>
                     
-                    
-                     <div class="fieldWrapper">
-              
-<span class="required align-center">{{ form.full_name.errors }}</span>
-             <label for="id_full_name" > 
-        <span class="align-field" >Full Name:</span>
-         <span class="required">*</span></label>
-                {{ form.full_name}} 
-                
-                      </div>
-                    
-                   
-                          
-                             <div class="fieldWrapper paragraph">
-	<span class="required">{{ form.birthday.errors }}</span>
-                                <label for="id_birthday"> 
-   <span class="align-field">Date of Birth:</span><span class="required">*</span></label>
-                                {{ form.birthday }} 
-                                    </div>
-
-	                   
-	                   
-	                   <div class="fieldWrapper">
-    <span class="required">{{ form.photo.errors }}</span>
-		<label for="id_photo"> 
-        <span class="align-field">Photo:</span><span class="required">*</span>
-                        </label>
-               <span class="align-field" > {{ form.photo }}</span>
-    			       </div>
-    			       
-    			       
-    			           
-                        <div class="fieldWrapper ">
-       <span class="required">{{ form.gender.errors }}</span>
+                    <div class="fieldWrapper">
+    <span class="required">{{ form.birthday.errors }}</span>
+		<label for="id_birthday"> 
+         <span class="align-field">Birth Day:</span></label>
+          <span  class="align-field">{{ form.birthday }}</span>
+    			</div>
+    			
+    			<div class="fieldWrapper">
+    <span class="required">{{ form.gender.errors }}</span>
 		<label for="id_gender"> 
-<span class="align-field">Gender:</span><span class="required">*</span></label>
-	         <span class="">{{ form.gender }}</span>
-	                      </div>
-    
-    
+           <span class="align-field">Gender:</span></label>
+          <span  class="align-field">{{ form.gender }}</span>
+    			</div>
+                    
+                    
+                     

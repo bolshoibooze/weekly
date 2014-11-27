@@ -6,7 +6,7 @@
 		         <div class='top-menu'>
         <a class="align-left" href="/home/stream/">Home</a>
            <a class="next" href="/home/popular/">Recommended</a>
-           <a class="align-right" href="/home/sections/">Sections</a>
+           <a class="align-right" href="/photos/all/">Photos</a>
 		      </div>
 		             {% endblock %}
 
@@ -15,13 +15,13 @@
   
                     <div class="container bottomed">
     
-             <form   action="." method="post" >{% csrf_token %}
+             <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
 
                          {{form.non_field_errors }}
 
                               <fieldset>
 
-                      {% include "reg_base.html" %}
+                      {% include "d_reg_base.html" %}
 
    <input class="button" name="post" value="Submit" type="submit"/>
 

@@ -17,6 +17,7 @@ from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
 from sorl.thumbnail import ImageField
 
+
 GENDER_CHOICES = (
    ('Male','Male'),
    ('Female','Female'),
@@ -30,9 +31,9 @@ class CustomUserManager(BaseUserManager):
         now = timezone.now()
         if not email:
             raise ValueError('The given email must be set')
-        email = CustomUserManager.normalize_email(email)
-        user = self.model(email=email,
-                          is_superuser=False,
+        #email = CustomUserManager.normalize_email(email)
+        user = self.model(email=email,is_staff=False,
+                          is_superuser=False,is_editor=False,can_write=False,
                           last_login=now, date_joined=now, **extra_fields)
  
         user.set_password(password)
@@ -53,16 +54,16 @@ class ExtendedUser(AbstractBaseUser, PermissionsMixin):
     )
     full_name = models.CharField(
        max_length=50,
-       blank=True,null=True
+       blank=True,null=True,
     )
     gender = models.CharField(
        max_length=10,blank=True,null=True,
        choices=GENDER_CHOICES, 
        verbose_name='Gender'
     )
-    photo = ImageField(
+    photo = models.ImageField(
        upload_to='images/writers',
-       blank=True,null=True
+       null=True,blank=True
     )
     birthday = models.DateField(
        auto_now_add=False,
@@ -115,7 +116,13 @@ class ExtendedUser(AbstractBaseUser, PermissionsMixin):
         return "/users/%s/" % urlquote(self.email)
         
     def can_edit(self):
-        return ExtendedUser.objects.filter(is_editor=True)
+        users = ExtendedUser.objects.all()
+        for user in users:
+            if user.is_editor==True:
+               return True
+            else:
+                return False
+        #return ExtendedUser.objects.filter(is_editor=True)
      
     def is_a_writer(self):
         return ExtendedUser.objects.filter(can_write=True) 
