@@ -48,4 +48,8 @@ class FaqListView(ModelListView):
     model = Faq
     fields = ('qstn','answer','date')
     mobile_template_name = 'm_faq_list.html'
-    template_name = 'faq_list.html'    
+    template_name = 'faq_list.html'  
+    
+    
+    
+      
