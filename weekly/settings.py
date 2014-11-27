@@ -14,13 +14,14 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tours',
+        'NAME': 'news_stand',
         'USER': 'siteadmin',
-        'PASSWORD': 'siteadmin_53$',
-        'HOST': 'localhost',                     
-        'PORT': '',                      
+        'PASSWORD': 'siteadmin_53$*',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
 
 
 

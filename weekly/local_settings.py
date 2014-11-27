@@ -18,7 +18,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'test',                      
-        'USER': '',#bolshoi53
+        'USER': '',#mwai@gmail.com
         'PASSWORD': '',#bolshoi53
         'HOST': '',                    
         'PORT': '',                    
@@ -68,6 +68,10 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+FILE_UPLOAD_HANDLERS = (
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+)
 
 SECRET_KEY = '^&c^gzeau$ltd%_hw6@t@iqvu99c6l*#+6%tn163-a3*mwsxcz'
 
@@ -150,6 +154,7 @@ INSTALLED_APPS = (
     'notifications',
     'ua_detector',
     
+    
     #'south',
     
 )
@@ -163,6 +168,8 @@ DEFAULT_FROM_EMAIL = 'weeklykenyan'
 
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('name', 'email', 'url')
 COMMENTS_APP = 'fluent_comments'
+
+
 
 
 
