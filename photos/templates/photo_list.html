@@ -40,11 +40,11 @@
               </p>
               
               
-                       <p>
+                       <p class="micro-copy">
  
- <span class="author">Posted by {{photo.author.full_name|safe}}</span> 
+ <span class="">Posted by <b>{{photo.author.full_name|safe}}</b></span> 
   
-               <span class="micro-copy align-right">
+               <span class="align-right">
 {{photo.pub_date|timesince}} ago |{% get_comment_count  for photo as comment_count %}
 {{comment_count}} comment{{comment_count|pluralize}}
                </span>

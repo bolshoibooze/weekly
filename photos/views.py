@@ -22,11 +22,15 @@ class PostPhotoView(ModelCreateView):
     form_class = PhotoForm
     mobile_template_name = 'm_photo_form.html'
     template_name = 'photo_form.html'
-    success_url = '/photos/all/'
+    success_url = '/photos/posted/'
     
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(PostPhotoView, self).form_valid(form)
+        
+class PhotoSuccessView(MobileTemplateView):
+    mobile_template_name = 'm_photo_posted.html'
+    template_name= 'photo_posted.html'
         
 class View(ModelListView):
     model = Photo

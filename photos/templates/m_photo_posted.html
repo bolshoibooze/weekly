@@ -1,0 +1,35 @@
+                    {% extends "mobile_core.html" %}
+
+                    {% load url from future %}
+                     
+                     
+                         {% block menu %}
+		      <div class='top-menu'>
+        <a class="align-left" href="/home/stream/">Home</a>
+           <a class="next" href="/home/popular/">Recommended</a>
+           <a class="align-right current" href="/photos/all/">Photos</a>
+		      </div>
+		          {% endblock %}
+
+
+		         {% block content %}
+              <div class="simple-title topped">Successful Post</div>
+
+
+                     <div class="container">
+                      <div class="paragraph">
+                   <p>Photo successfully posted.</p>
+                  
+           <p>
+           It might take a few seconds for your photo to be public.
+           </p>
+           
+           <p>Thanks for making the community vibrant </p>
+           
+                            
+                       
+           
+          </div>
+        
+           
+		                 {% endblock %}

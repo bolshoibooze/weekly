@@ -21,9 +21,7 @@ from weekly.settings import *
 
 #from follow import utils
 from sorl.thumbnail import ImageField
-from django.contrib import comments
-from django.contrib.comments import Comment
-from notifications import notify
+
 
 
 class PhotoManager(models.Manager):
@@ -54,7 +52,7 @@ class Photo(models.Model):
     caption = models.CharField(
        max_length=140
     )
-    main_photo = ImageField(
+    main_photo = models.ImageField(
        upload_to='funny_photos',
        verbose_name='Photo'
     )

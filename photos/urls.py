@@ -18,5 +18,12 @@ urlpatterns = patterns('photos.views',
              
     url(r'^photo/(?P<slug>[a-zA-Z0-9-]+)/$', PhotoDetailView.as_view(),
         name='photo'),
+        
+    url(r'^posted/$',PhotoSuccessView.as_view(),
+        name='posted'),
+        
    
 )
+
+
+

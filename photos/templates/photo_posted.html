@@ -1,0 +1,34 @@
+                         {% extends "desktop_core.html" %}
+                         
+                                 {% block nav %}
+               		   <div class="nav center">
+               
+       		<ul>
+	
+		<li><a href="/home/stream/">Home</a></li>
+		<li><a href="/home/popular/">Recommended</a></li>
+		<li class="current"><a href="/photos/all/">Photos</a></li>
+	
+	
+      		</ul>
+   	    </div>
+                   		{% endblock %}
+		   
+
+                              {% block content %}
+         <div class="simple-title welcome stylish">Successful Post  </div>
+
+                      <div class="wide-section spaced">
+           
+                           <div class="center-content">
+                   <p>Your photo was successfully posted.</p>
+                  
+           <p>
+           It might take a few seconds for your photo to be public.
+           </p>
+           
+           <p>Thanks for making the community vibrant </p>
+                             
+            </div>
+          </div>
+			{% endblock %}
