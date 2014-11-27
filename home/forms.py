@@ -9,7 +9,6 @@ from weekly.settings import *
 from .widgets import *
 from .models import *
 
-
         
 class ArticleForm(forms.ModelForm):
     post = forms.CharField(
@@ -41,10 +40,9 @@ class ArticleForm(forms.ModelForm):
 class CreateForm(forms.ModelForm):
     post = forms.CharField(
         max_length=5000,label='Post',
-        widget=forms.Textarea(attrs={'rows':60,'cols':20}),
-        initial = mark_safe(
-        "Title: <h1> My Title</h1>"
-        )
+        #widget=forms.Textarea(attrs={'rows':60,'cols':20}),
+        widget=AutoResizeTextarea(attrs={'rows':30,'cols':20}),
+        initial = mark_safe("Title: <h1> My Title</h1>")
         
     )
     main_photo = forms.ImageField(widget=ImageWidget())
@@ -53,7 +51,7 @@ class CreateForm(forms.ModelForm):
         super(CreateForm, self).__init__(*args, **kwargs)
         self.fields['section'].widget.attrs['class'] = 'alt-choices'
         self.fields['main_photo'].widget.attrs['class'] = 'fileUpoad'
-        self.fields['post'].widget.attrs['class'] = 'penplate'
+        
         
         
     class Meta(object):

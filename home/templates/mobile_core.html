@@ -106,6 +106,10 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
       			<p class="author">
     <a class="" href="{% url 'myprofile' %}">{{user.full_name}}</a>  &middot; <a class="" href="{% url 'logout' %}">Logout</a>
                         </p>
+                        
+                        <p class="author">
+                     <a href="{% url 'edit_profile' user.pk %}">Profile Settings</p>
+                        </p>
      
                         {% else %}
                         
@@ -114,7 +118,7 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
                  </p>
       			{% endif %}
       			
-      			{% if user.can_edit %}
+      			{% if user.is_staff %}
       	                 <p class="styled">
                <a  href="{% url 'unpublished' %}">Review Unpublished Articles</a>
                  </p>

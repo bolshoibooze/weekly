@@ -22,9 +22,10 @@ from weekly.settings import *
 
 #from follow import utils
 from sorl.thumbnail import ImageField
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.comments.models import Comment
+from django.contrib.contenttypes.models import *
+from django.contrib.comments.models import *
 from django.dispatch import dispatcher
+
 
 class Section(models.Model):
     name = models.CharField(
@@ -126,7 +127,7 @@ class Article(models.Model):
        Section,related_name='sections',
        verbose_name='Section'
     )
-    main_photo = ImageField(
+    main_photo = models.ImageField(
        upload_to='article_photos',
        verbose_name='Main Photo'
     )
