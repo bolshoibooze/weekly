@@ -164,6 +164,7 @@ AUTH_USER_MODEL = 'users.ExtendedUser'
 DEFAULT_FROM_EMAIL = 'weeklykenyan'
 
 
+
 #POPULARITY_LISTSIZE = '30'
 
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('name', 'email', 'url')
